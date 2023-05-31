@@ -1,7 +1,7 @@
 -- Author: AB
 -- Version: 1.0
--- Description: This script enables you to adjust the volume of the selected track(s) in decibels (dB).
--- To use it, by simply double-clicking on a mixer track. Follow these steps:
+-- Description: This script enables you to adjust (substract/add) the volume of the selected track(s) in decibels (dB).
+-- If you'd like to use it by double-clicking on a mixer track panel. Follow these steps:
 -- 1-Go to Preferences.
 -- 2-Select Mouse Modifiers.
 -- 3-Navigate to Mixer Control Panel.
@@ -23,7 +23,7 @@ function main()
   end
   
   -- Get User Input
-  local userPrompt = "Enter the volume adjustment in dB:"
+  local userPrompt = "Volume adjustment in dB (-+):"
   local _, userInput = reaper.GetUserInputs("Volume Adjustment", 1, userPrompt, "0")
   
   -- Check if the user canceled the input
@@ -36,7 +36,7 @@ function main()
   
   -- Check if the user input is valid
   if trackVolDb == nil then
-      reaper.ShowMessageBox("Not a valir number. Please use a db value", "Info", 0)
+      reaper.ShowMessageBox("Not a valid number. Please use a db value", "Info", 0)
     return
   end
   
